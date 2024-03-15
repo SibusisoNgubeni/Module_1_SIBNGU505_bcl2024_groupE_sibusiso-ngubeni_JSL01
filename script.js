@@ -1,18 +1,15 @@
 function validateSyntax() {
   let input = document.getElementById("petInput").value;
 
-  let result1 = "Syntax is valid 🟢";
-  let result2 = "Syntax is invalid 🔴";
+  let result = input.match(/^pet_\d{4}\S+$/)
+    ? "Valid Syntax 🟢"
+    : "Invalid Syntax 🔴";
 
-  if (input.match(/^pet_\d{4}\S+$/)) {
-    return result1;
-  } else {
-    return result2;
-  }
+  document.getElementById("result").innerText = result;
 }
 
 document.getElementById("petInput").addEventListener("input", function () {
-  document.getElementById("result").innerText = validateSyntax();
+  validateSyntax();
 });
 
 document.getElementById("results").addEventListener("click", function () {
