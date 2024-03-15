@@ -1,12 +1,20 @@
 function validateSyntax() {
-    let input = document.getElementById('petInput').value;
-    // Validation logic goes here
-    let result = ''; // Placeholder for validation result
+  let input = document.getElementById("petInput").value;
 
-    // TODO: Write your validation logic here
-        // Check if input starts with 'pet_' and followed by alphanumeric characters
+  let result1 = "Syntax is valid 🟢";
+  let result2 = "Syntax is invalid 🔴";
 
-            document.getElementById('result').innerText = result;
+  if (input.match(/^pet_\d{4}\S+$/)) {
+    return result1;
+  } else {
+    return result2;
+  }
 }
 
+document.getElementById("petInput").addEventListener("input", function () {
+  document.getElementById("result").innerText = validateSyntax();
+});
 
+document.getElementById("results").addEventListener("click", function () {
+  alert(validateSyntax());
+});
